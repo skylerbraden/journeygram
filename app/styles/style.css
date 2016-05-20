@@ -1,11 +1,12 @@
 html {
 	background-color: #e3e3e3;
+	font-family: Raleway, sans-serif;
 }
 
 h1 {
 	font-family: Lobster, script;
 	color: #89bdd3;
-	margin: 15px;
+	margin: 15px 25px;
 }
 
 
