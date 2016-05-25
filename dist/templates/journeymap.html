@@ -1,32 +1,17 @@
 <!--
 <body>
 <h1>JourneyGram</h1>
-
+	{{journeymap.latList}}
 	<ul id="test-list">
-	</ul>
-
-	<h3><a href="https://api.instagram.com/oauth/authorize/?client_id=0f878fa858044f4db31133692822c10b&redirect_uri=http://localhost:3000/&response_type=token">
-		Click this to learn more about what I'm doing.
-	</a></h3>
-	
-	
-	
-</body>
--->
-
-
-<body>
-<h1>JourneyGram</h1>
-
-	<ul id="test-list">
-		<li ng-repeat="lat in journeymap.instaApi.latList">{{lat.$index}}</li>
+		<li ng-repeat="lat in journeymap.latList">{{lat}}</li>
 		<li>is this working?</li>
 	</ul>
 
 	<h3><a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000/&response_type=token&scope=public_content">
 		Click here to genterate an access token.
 	</a></h3>
+
 	
-	
-	
+
 </body>
+-->
