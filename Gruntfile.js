@@ -16,6 +16,7 @@ module.exports = function(grunt) {
                     './app/styles/**/*.css',
                     './app/pages/**/*.html',
                     './app/templates/**/*.html',
+                    './bower_components/*.js',
                     'Gruntfile.js'
                 ],
                 tasks: [
@@ -55,7 +56,13 @@ module.exports = function(grunt) {
                     src: [ './**/*.html' ],
                     dest: './dist/templates',
                     cwd: './app/templates'
-                }]
+                }, {
+                    expand: true,
+                    src: [ './**/*.js' ],
+                    dest: './dist/bower_components',
+                    cwd: './bower_components'
+                }
+            ]
             }
         },
 

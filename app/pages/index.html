@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<!-- <html ng-app="journeygram"> -->
-<html>
+<html ng-app="journeygram">
 	<head lang="en">
 		<meta charset="UTF-8">
 		<title>JourneyGram</title>
@@ -14,89 +13,28 @@
 
 	<body>
 		<ui-view></ui-view>
+		<script src="https://code.jquery.com/jquery-1.12.2.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ_PQVMP8er9QldMQu5tepjhSXtGEHcA0"></script>
+
+
+		<script type="text/javascript" src="bower_components/lodash/dist/lodash.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
-		<script src="https://code.jquery.com/jquery-1.12.2.js"></script>
+
+
+		<script src="/bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+
+		<script src="/bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+
+
+
 		<script src="/scripts/app.js"></script>
-		<script src="/scripts/controllers/JourneyMapCtrl.js"></script>
 
-		<h1>Add a marker!</h1>
-
-		<div ng-controller="MapController">
-			<form novalidate class="marker-form">
-				<table>
-					<tr>
-						<td>Latitude:</td>
-						<td><input type="number" ng-model="marker.latitude" /></td>
-					</tr>
-					<tr>
-						<td>Longitude:</td>
-						<td><input type="number" ng-model="marker.longitude" /></td>
-					</tr>
-					<tr>
-						<td style="padding-right: 25px;">Marker Name:</td>
-						<td><input type="text" ng-model="marker.name" /></td>
-					</tr>
-					<tr>
-						<td style="padding-top: 15px;"><input type="submit" ng-click="update(marker)" value="Add Marker" /></td>
-					</tr>
-				</table>
-			</form>
-			<pre>city = {{marker | json}}</pre>
-			<pre>master = {{master | json}}</pre>
-		</div>
-
-		<div id="map" style="width: 100%; height: 500px; margin: 25px auto;">
-		</div>
-
-		<script>
-			angular.module('mapForm', [])
-				.controller('MapController', ['$scope', function($scope) {
-					$scope.master = {};
-
-					$scope.update = function(marker) {
-						$scope.master = angular.copy(marker);
-					};
-				}]);
-		</script>
+		<script src="/scripts/controllers/InstagramCtrl.js"></script>
+		<script src="/scripts/controllers/JourneyViewCtrl.js"></script>
+		<script src="/scripts/directives/googleMap.js"></script>
 
 
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCZ_PQVMP8er9QldMQu5tepjhSXtGEHcA0&callback=initMap"
-    async defer></script>
-		<script>
-			var map;
-
-			function initMap() {
-				map = new google.maps.Map(document.getElementById('map'), {
-					center: {lat: 39.6133, lng: -105.0166},
-					zoom: 8
-				});
-
-				var marker = new google.maps.Marker({
-					position: {lat: 39.6133, lng: -105.0166},
-					map: map,
-					title: 'Littleton'
-				});
-
-				//function that adds markers
-				var addMarker = function(newLat, newLng, markerTitle) {
-					var newMarker = new google.maps.Marker({
-						position: {lat: newLat, lng: newLng},
-						map: map,
-						title: markerTitle
-					});
-				}
-
-				addMarker(38.8339, -104.8214, "The Springs!");
-
-			}
-
-
-
-
-//			addMarker(38.8339, -104.8214, "The Springs!");
-
-		</script>
 
 	</body>
 
