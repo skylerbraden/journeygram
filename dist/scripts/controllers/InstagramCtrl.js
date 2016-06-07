@@ -1,5 +1,5 @@
 (function() {
-    function JourneyMapCtrl($scope) {
+    function InstagramCtrl($scope) {
 
 		vm = this;
 		vm.latList = [];
@@ -51,5 +51,5 @@
 	}
     angular
         .module('journeygram')
-        .controller('JourneyMapCtrl', ['$scope', JourneyMapCtrl]);
+        .controller('InstagramCtrl', ['$scope', InstagramCtrl]);
 })();

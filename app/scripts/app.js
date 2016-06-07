@@ -5,21 +5,21 @@
                 enabled: true,
                 requireBase: false
         });
-        
+
         $stateProvider
-            .state('journeymap', {
-                url: '/',
-                controller: 'JourneyMapCtrl as journeymap',
-                templateUrl: '/templates/journeymap.html'
-            });
-//			.state('history', {
-//				url: '/history',
-//				controller: 'TaskListCtrl as tasklist',
-//				templateUrl: '/templates/history.html'
-//			});
+            .state('instagram', {
+                url: '/instagram',
+                controller: 'InstagramCtrl as instagram',
+                templateUrl: '/templates/instagram.html'
+            })
+			.state('journeyview', {
+				url: '/',
+				controller: 'JourneyViewCtrl as journeyview',
+				templateUrl: '/templates/journeyview.html'
+			});
     }
-    
+
     angular
-        .module('journeygram', ['ui.router'])
+        .module('journeygram', ['ui.router', 'uiGmapgoogle-maps'])
         .config(config);
  })();
