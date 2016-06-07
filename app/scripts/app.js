@@ -20,6 +20,6 @@
     }
 
     angular
-        .module('journeygram', ['ui.router', 'uiGmapgoogle-maps'])
+        .module('journeygram', ['ui.router'])
         .config(config);
  })();
