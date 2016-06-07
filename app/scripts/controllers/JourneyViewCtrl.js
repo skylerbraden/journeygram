@@ -1,7 +1,8 @@
 (function() {
-    function JourneyViewCtrl() {
+    function JourneyViewCtrl(Cities) {
 
         console.log("The controller is working.");
+        console.log(Cities[1]);
 
 
 
@@ -9,5 +10,5 @@
 
     angular
         .module('journeygram')
-        .controller('JourneyViewCtrl', [JourneyViewCtrl]);
+        .controller('JourneyViewCtrl', ['Cities', JourneyViewCtrl]);
 })();
