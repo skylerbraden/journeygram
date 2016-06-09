@@ -14,7 +14,7 @@
             })
 			.state('journeyview', {
 				url: '/',
-				controller: 'JourneyViewCtrl as journeyview',
+				controller: 'JourneyViewCtrl as journeyView',
 				templateUrl: '/templates/journeyview.html'
 			});
     }

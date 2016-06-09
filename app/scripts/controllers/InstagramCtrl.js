@@ -5,21 +5,17 @@
 		vm.latList = [];
 
 		vm.instaApi = function(photo){
-//			console.log("this is just a test")
-//			console.log(photo.data);
-			var latitude = photo.data[0].location.latitude;
+			// console.log(photo.data);
+			// var latitude = photo.data[0].location.latitude;
 
-
-
-//			console.log("Inside instaApi function");
-//			console.log(vm.latList);
+			console.log(vm.latList);
 
 			$scope.$apply(function(){
 				for (var i=0; i < photo.data.length; i++) {
 					vm.latList.push(photo.data[i].location.latitude);
 				}
 
-			})
+			});
 
 		};
 
