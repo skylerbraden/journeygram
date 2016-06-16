@@ -1,16 +1,19 @@
-
+<!--
 <body>
-<h1>JourneyGram</h1>
-	{{journeymap.latList}}
+<h1>Instagram</h1>
+	<!-- {{instagram.latList}}
 	<ul id="test-list">
 		<li ng-repeat="lat in instagram.latList">{{lat}}</li>
 		<li>is this working?</li>
-	</ul>
+	</ul> -->
+<div class="recent-photos" ng-repeat="photo in instagram.photoList">
+	<img src="{{photo.thumbnail.url}}">
+</div>
 
-	<h3><a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000/&response_type=token&scope=public_content">
+	<!-- <h3><a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000/&response_type=token&scope=public_content">
 		Click here to genterate an access token.
-	</a></h3>
+	</a></h3> -->
 
 
 
-</body>
+</body> -->
