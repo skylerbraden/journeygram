@@ -1,4 +1,8 @@
 <h1>JourneyGram</h1>
 <div id="journey-map" style="width: 100%; height: 500px;"></div>
-<new-marker-form/>
-<ng-include src="'/templates/instagram.html'"></ng-include>
+<!-- <new-marker-form/> -->
+
+<h1>Instagram</h1>
+<div class="recent-photos" ng-repeat="photo in journeyView.photoList">
+	<img src="{{photo.thumbnail.url}}">
+</div>

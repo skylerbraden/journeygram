@@ -6,34 +6,31 @@
         var london = {lat: 51.5074, lng: 0.1278};
 
         vm.map = new google.maps.Map(document.getElementById('journey-map'), {
-            center: london,
-            scrollwheel: true,
+            center: littleton,
+            scrollwheel: false,
             zoom: 8
         });
 
+        // vm.addMarker = function() {
+        //     var newMarker = new google.maps.Marker({
+        //         map: vm.map,
+        //         position: {lat: parseInt(newMarker.lat), lng: parseInt(newMarker.lng)},
+        //         title: newMarker.title
+        //     });
+        // };
+
         // google.maps.event.addListenerOnce(vm.map, 'idle', function(){
-        //     // vm.addMarker(coloSprings.lat, coloSprings.lng, "Co. Springs");
-        //     // vm.addMarker(littleton.lat, littleton.lng, "Littleton");
+        //     vm.addMarker(coloSprings.lat, coloSprings.lng, "Co. Springs");
+        //     vm.addMarker(littleton.lat, littleton.lng, "Littleton");
         // });
-
-        vm.addMarker = function() {
-                var newMarker = new google.maps.Marker({
-                        position: {lat: parseInt(vm.newMarker.lat), lng: parseInt(vm.newMarker.lng)},
-                        map: vm.journeyView.map,
-                        title: vm.newMarker.title
-                });
-        };
-
-
-
-
 
 
         //Instagram
         vm.latList = [];
         vm.photoList = [];
+        vm.locationList = [];
 
-        vm.instaApi = function(photo){
+        instaApi = function(photo){
             console.log(photo.data);
             // var latitude = photo.data[0].location.latitude;
 
@@ -43,6 +40,7 @@
                 for (var i=0; i < photo.data.length; i++) {
                     vm.latList.push(photo.data[i].location.latitude);
                     vm.photoList.push(photo.data[i].images);
+                    vm.locationList.push(photo.data[i].location);
                 }
 
             });
@@ -55,12 +53,22 @@
             type: 'get',
             dataType: 'jsonp',
             crossOrigin: true,
-            jsonpCallback: "vm.instaApi",
+            jsonpCallback: "instaApi",
             cache: true
         });
+
+
+        // Plot Instagram locations on Google Map
+        var instaMarker = new google.maps.Marker({
+            map: vm.map,
+            position: {vm.locationList[0].latitude, vm.locationList[0].longitude},
+            title: 'London!'
+        });
+
+
     }
 
     angular
         .module('journeygram')
-        .controller('JourneyViewCtrl', [JourneyViewCtrl]);
+        .controller('JourneyViewCtrl', ['$scope', JourneyViewCtrl]);
 })();
