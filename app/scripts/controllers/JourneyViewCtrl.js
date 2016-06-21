@@ -59,11 +59,11 @@
 
 
         // Plot Instagram locations on Google Map
-        var instaMarker = new google.maps.Marker({
-            map: vm.map,
-            position: {vm.locationList[0].latitude, vm.locationList[0].longitude},
-            title: 'London!'
-        });
+        // var instaMarker = new google.maps.Marker({
+        //     map: vm.map,
+        //     position: {vm.locationList[0].latitude, vm.locationList[0].longitude},
+        //     title: 'London!'
+        // });
 
 
     }
