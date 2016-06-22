@@ -3,6 +3,7 @@
 <!-- <new-marker-form/> -->
 
 <h1>Instagram</h1>
-<div class="recent-photos" ng-repeat="photo in journeyView.photoList">
-	<img src="{{photo.thumbnail.url}}">
+<div style="margin-left: 25px;" class="recent-photos" ng-repeat="photo in journeyView.photoList | orderBy:'time'">
+	<img src="{{photo.image.url}}">
+	<p style="text-transform: uppercase; margin-top: 0;">{{photo.name}}</p>
 </div>
