@@ -1,5 +1,6 @@
 (function() {
-    function JourneyViewCtrl($scope) {
+    function JourneyViewCtrl($scope, hasInstagram) {
+        console.log(hasInstagram);
         var vm = this;
         var littleton = {lat: 39.6133, lng: -105.0166};
         var coloSprings = {lat: 38.8339, lng: -104.8214};
@@ -9,8 +10,31 @@
         vm.map = new google.maps.Map(document.getElementById('journey-map'), {
             center: nyc,
             scrollwheel: false,
+            styles: styleArray,
             zoom: 3
         });
+
+        var styleArray = [
+          {
+            featureType: "all",
+            stylers: [
+             { saturation: -80 }
+            ]
+          },{
+            featureType: "road.arterial",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#00ffee" },
+              { saturation: 50 }
+            ]
+          },{
+            featureType: "poi.business",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+          }
+        ];
 
         // vm.addMarker = function() {
         //     var newMarker = new google.maps.Marker({
@@ -44,39 +68,41 @@
                         // title: 'Title'
                     });
                 }
-            });
 
-            // Directions between Instagrams
-            var directionsDisplay = new google.maps.DirectionsRenderer({
-              map: vm.map
-            });
 
-            // Set destination, origin and travel mode.
-            var request = {
-              destination: indianapolis,
-              origin: chicago,
-              travelMode: google.maps.TravelMode.DRIVING
-            };
+              // // Directions between Instagrams
+              var directionsDisplay = new google.maps.DirectionsRenderer({
+                map: vm.map
+              });
 
-            // Pass the directions request to the directions service.
-            var directionsService = new google.maps.DirectionsService();
-            directionsService.route(request, function(response, status) {
-              if (status == google.maps.DirectionsStatus.OK) {
-                // Display the route on the map.
-                directionsDisplay.setDirections(response);
-              }
+              // Set destination, origin and travel mode.
+              var request = {
+                destination: {lat: vm.locationList[1].lat, lng: vm.locationList[1].lng},
+                origin: {lat: vm.locationList[2].lat, lng: vm.locationList[2].lng},
+                travelMode: google.maps.TravelMode.DRIVING
+              };
+
+              // Pass the directions request to the directions service.
+              var directionsService = new google.maps.DirectionsService();
+              directionsService.route(request, function(response, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                  // Display the route on the map.
+                  directionsDisplay.setDirections(response);
+                }
+              });
+
             });
 
         };
 
-        $.ajax({
-            url: "https://api.instagram.com/v1/tags/journeygram/media/recent?access_token=3264274466.d8576bc.77adee700b254e958a8bbb6967a61142",
-            type: 'get',
-            dataType: 'jsonp',
-            crossOrigin: true,
-            jsonpCallback: "instaApi",
-            cache: true
-        });
+        // $.ajax({
+        //     url: "https://api.instagram.com/v1/tags/journeygram/media/recent?access_token=3264274466.d8576bc.77adee700b254e958a8bbb6967a61142",
+        //     type: 'get',
+        //     dataType: 'jsonp',
+        //     crossOrigin: true,
+        //     jsonpCallback: "instaApi",
+        //     cache: true
+        // });
 
 
 
@@ -99,5 +125,5 @@
 
     angular
         .module('journeygram')
-        .controller('JourneyViewCtrl', ['$scope', JourneyViewCtrl]);
+        .controller('JourneyViewCtrl', ['$scope', 'hasInstagram', JourneyViewCtrl]);
 })();
