@@ -1,11 +1,15 @@
-<h1>JourneyGram</h1>
-<a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
-	Click Here to generate access token.</a>
+<h1 id="journeygram-h1">JourneyGram</h1>
+
+	<a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
+		<button class="login-btn" type="button">Login with your Instagram Account</button>
+	</a>
+
+
 <div id="journey-map" style="width: 100%; height: 500px;"></div>
 <!-- <new-marker-form/> -->
 
-<h1>Instagram</h1>
-<div style="margin-left: 25px;" class="recent-photos" ng-repeat="photo in journeyView.photoList | orderBy:'time'">
+<h2>Recent Photos</h2>
+<div class="recent-photos" ng-repeat="photo in journeyView.photoList | orderBy:'time'">
 	<img src="{{photo.image.url}}">
-	<p style="text-transform: uppercase; margin-top: 0;">{{photo.name}}</p>
+	<p>{{photo.name}}</p>
 </div>
