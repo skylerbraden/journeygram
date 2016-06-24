@@ -47,10 +47,19 @@ h2 {
 		color: #545454;
 		font-weight: 600;
 		float: right;
+		border-radius: 35px;
+		transition: background-color 0.75s ease;
+
+}
+
+.login-btn:hover {
+	background-color: #dbf4ff !important;
 }
 
 #journey-map {
 	margin-bottom: 2%;
+	width: 100%;
+	height: 400px;
 }
 
 
