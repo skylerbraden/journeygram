@@ -39,16 +39,20 @@ h2 {
 		background-color: #89bdd3 !important;
 		text-decoration: none;
 		text-transform: uppercase;
-		width: 17%;
+		width: 15%;
 		height: 10%;
 		padding: 1%;
 		margin-top: 2%;
 		border: none;
 		color: #545454;
 		font-weight: 600;
+		font-size: 0.75em;
 		float: right;
 		border-radius: 35px;
 		transition: background-color 0.75s ease;
+		-ms-transform: translate(0, 25px); /* IE 9 */
+   	-webkit-transform: translate(0, 25px); /* Safari */
+    transform: translate(0, 25px);
 
 }
 

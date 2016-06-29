@@ -118,6 +118,13 @@
         //   console.log(vm.locationList);
         // };
 
+        $('.clickme').click(function() {
+         if(confirm("Are you sure you want to navigate away from this page?"))
+         {
+            history.go(-1);
+         }
+         return false;
+      });
 
     }
 

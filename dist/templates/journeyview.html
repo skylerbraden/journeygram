@@ -1,13 +1,12 @@
 <h1 id="journeygram-h1">JourneyGram</h1>
 
-	<a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
+	<a ng-show="loggedIn = false" href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
 		<button class="login-btn" type="button">Login with your Instagram account</button>
 	</a>
 
-	<a href="https://instagram.com/accounts/logout/">
-		<button class="login-btn" style="clear: both;" type="button">Logout</button>
+	<a ng-show="loggedIn = true" href="https://instagram.com/accounts/logout/">
+		<button class="login-btn" type="button">Logout</button>
 	</a>
-
 
 <div id="journey-map"></div>
 <!-- <new-marker-form/> -->
