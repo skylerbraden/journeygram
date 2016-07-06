@@ -32,9 +32,10 @@
               "hasInstagram" : function($location, $stateParams, $rootScope){
                 if($stateParams.accessToken != undefined){
                   $rootScope.loggedIn = true;
-                  console.log("trying to json P")
+                  journeyView.jvLoggedIn = true;
+                  console.log("trying to json P");
+                //   console.log($rootScope.loggedIn);
                   $.ajax({
-                    //   url: "https://api.instagram.com/v1/tags/journeygram/media/recent?access_token=" + $stateParams.accessToken,
                       url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + $stateParams.accessToken,
                       type: 'get',
                       dataType: 'jsonp',
@@ -44,8 +45,10 @@
                   });
                   return "Logged in."
                 }else{
-                    $rootScope.loggedIn = false;
                     return "no access_token";
+                    $rootScope.loggedIn = false;
+                    journeyView.jvLoggedIn = false;
+                    // console.log($rootScope.loggedIn);
                 }
               }
             }
@@ -56,3 +59,6 @@
         .module('journeygram', ['ui.router'])
         .config(config);
  })();
+
+
+ //   url: "https://api.instagram.com/v1/tags/journeygram/media/recent?access_token=" + $stateParams.accessToken,

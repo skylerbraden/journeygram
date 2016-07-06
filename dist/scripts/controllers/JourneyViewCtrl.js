@@ -1,7 +1,7 @@
 (function() {
     function JourneyViewCtrl($scope, hasInstagram, $location, $rootScope) {
         $location.path("/");
-        // console.log(hasInstagram);
+        console.log(hasInstagram);
         var vm = this;
         var littleton = {lat: 39.6133, lng: -105.0166};
         var coloSprings = {lat: 38.8339, lng: -104.8214};

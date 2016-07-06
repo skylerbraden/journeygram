@@ -1,18 +1,24 @@
 <h1 id="journeygram-h1">JourneyGram</h1>
 
-	<a ng-show="loggedIn = false" href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
+	<a ng-show="$rootScope.jvLoggedIn = false" href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
 		<button class="login-btn" type="button">Login with Instagram</button>
 	</a>
 
-	<a ng-show="loggedIn = true" href="https://instagram.com/accounts/logout/">
+	<a ng-show="$rootScope.jvLoggedIn = true" href="https://instagram.com/accounts/logout/">
 		<button class="login-btn" type="button">Logout</button>
 	</a>
 
 <div id="journey-map"></div>
 <!-- <new-marker-form/> -->
+<p style="color: white;">{{journeyView.jvLoggedIn}}</p>
+
 
 <h2 ng-hide="journeyView.photoList.length <= 0">Recent Photos</h2>
 <div class="recent-photos" ng-repeat="photo in journeyView.photoList | orderBy:'time'">
 	<img src="{{photo.image.url}}">
 	<p>{{photo.name}}</p>
 </div>
+
+
+<!-- ng-show="$rootScope.loggedIn = false" -->
+ <!-- ng-show="$rootScope.loggedIn = true" -->
