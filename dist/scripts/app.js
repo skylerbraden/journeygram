@@ -30,25 +30,22 @@
             templateUrl: '/templates/journeyview.html',
             resolve: {
               "hasInstagram" : function($location, $stateParams, $rootScope){
-                if($stateParams.accessToken != undefined){
-                  $rootScope.loggedIn = true;
-                  journeyView.jvLoggedIn = true;
-                  console.log("trying to json P");
-                //   console.log($rootScope.loggedIn);
-                  $.ajax({
-                      url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + $stateParams.accessToken,
-                      type: 'get',
-                      dataType: 'jsonp',
-                      crossOrigin: true,
-                      jsonpCallback: "instaApi",
-                      cache: true
+                //   $rootScope.loggedIn = false;
+                  if($stateParams.accessToken != undefined){
+                      $rootScope.loggedIn = true;
+                      console.log("trying to json P");
+                      $.ajax({
+                          url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + $stateParams.accessToken,
+                          type: 'get',
+                          dataType: 'jsonp',
+                          crossOrigin: true,
+                          jsonpCallback: "instaApi",
+                          cache: true
                   });
                   return "Logged in."
                 }else{
                     return "no access_token";
                     $rootScope.loggedIn = false;
-                    journeyView.jvLoggedIn = false;
-                    // console.log($rootScope.loggedIn);
                 }
               }
             }

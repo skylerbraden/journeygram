@@ -3,39 +3,21 @@
         $location.path("/");
         console.log(hasInstagram);
         var vm = this;
-        var littleton = {lat: 39.6133, lng: -105.0166};
-        var coloSprings = {lat: 38.8339, lng: -104.8214};
+        // var littleton = {lat: 39.6133, lng: -105.0166};
+        // var coloSprings = {lat: 38.8339, lng: -104.8214};
         var london = {lat: 51.5074, lng: 0.1278};
         var nyc = {lat: 40.7128, lng: -74.0059};
+
+        // $rootScope.loggedIn = false;
 
         vm.map = new google.maps.Map(document.getElementById('journey-map'), {
             center: nyc,
             scrollwheel: false,
-            styles: styleArray,
+            styles: vm.styleArray,
             zoom: 3
         });
 
-        var styleArray = [
-          {
-            featureType: "all",
-            stylers: [
-             { saturation: -80 }
-            ]
-          },{
-            featureType: "road.arterial",
-            elementType: "geometry",
-            stylers: [
-              { hue: "#00ffee" },
-              { saturation: 50 }
-            ]
-          },{
-            featureType: "poi.business",
-            elementType: "labels",
-            stylers: [
-              { visibility: "off" }
-            ]
-          }
-        ];
+
 
         // vm.addMarker = function() {
         //     var newMarker = new google.maps.Marker({
@@ -92,19 +74,32 @@
                 }
               });
 
+
+              vm.styleArray = [
+                {
+                  featureType: "all",
+                  stylers: [
+                   { saturation: -80 }
+                  ]
+                },{
+                  featureType: "road.arterial",
+                  elementType: "geometry",
+                  stylers: [
+                    { hue: "#00ffee" },
+                    { saturation: 50 }
+                  ]
+                },{
+                  featureType: "poi.business",
+                  elementType: "labels",
+                  stylers: [
+                    { visibility: "off" }
+                  ]
+                }
+              ];
+
             });
 
         };
-
-        // $.ajax({
-        //     url: "https://api.instagram.com/v1/tags/journeygram/media/recent?access_token=3264274466.d8576bc.77adee700b254e958a8bbb6967a61142",
-        //     type: 'get',
-        //     dataType: 'jsonp',
-        //     crossOrigin: true,
-        //     jsonpCallback: "instaApi",
-        //     cache: true
-        // });
-
 
 
         // Plot Instagram locations on Google Map
@@ -118,14 +113,6 @@
         //   }
         //   console.log(vm.locationList);
         // };
-
-        $('.clickme').click(function() {
-         if(confirm("Are you sure you want to navigate away from this page?"))
-         {
-            history.go(-1);
-         }
-         return false;
-      });
 
     }
 
