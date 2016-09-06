@@ -7,14 +7,15 @@
         // var coloSprings = {lat: 38.8339, lng: -104.8214};
         var london = {lat: 51.5074, lng: 0.1278};
         var nyc = {lat: 40.7128, lng: -74.0059};
+        var kcmo = {lat: 39.0997, lng: -94.5786};
 
         // $rootScope.loggedIn = false;
 
         vm.map = new google.maps.Map(document.getElementById('journey-map'), {
-            center: nyc,
+            center: kcmo,
             scrollwheel: false,
             styles: vm.styleArray,
-            zoom: 3
+            zoom: 4
         });
 
 
@@ -59,20 +60,30 @@
               });
 
               // Set destination, origin and travel mode.
-              var request = {
-                destination: {lat: vm.locationList[1].lat, lng: vm.locationList[1].lng},
-                origin: {lat: vm.locationList[2].lat, lng: vm.locationList[2].lng},
-                travelMode: google.maps.TravelMode.DRIVING
-              };
+              // var request = {
+              //   destination: {lat: vm.locationList[1].lat, lng: vm.locationList[1].lng},
+              //   origin: {lat: vm.locationList[0].lat, lng: vm.locationList[0].lng},
+              //   travelMode: google.maps.TravelMode.DRIVING
+              // };
+              //
+              // // Pass the directions request to the directions service.
+              // var directionsService = new google.maps.DirectionsService();
+              // directionsService.route(request, function(response, status) {
+              //   if (status == google.maps.DirectionsStatus.OK) {
+              //     // Display the route on the map.
+              //     directionsDisplay.setDirections(response);
+              //   }
+              // });
 
-              // Pass the directions request to the directions service.
-              var directionsService = new google.maps.DirectionsService();
-              directionsService.route(request, function(response, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                  // Display the route on the map.
-                  directionsDisplay.setDirections(response);
-                }
-              });
+              if (i == 0) request.origin = marker.getPosition();
+              else if (i == locations.length - 1) request.destination = marker.getPosition();
+              else {
+                if (!request.waypoints) request.waypoints = [];
+                request.waypoints.push({
+                  location: marker.getPosition(),
+                  stopover: true
+                });
+              }
 
 
               vm.styleArray = [
