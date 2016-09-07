@@ -14,7 +14,27 @@
         vm.map = new google.maps.Map(document.getElementById('journey-map'), {
             center: kcmo,
             scrollwheel: false,
-            styles: vm.styleArray,
+            styles: [
+              {
+                featureType: "all",
+                stylers: [
+                 { saturation: -40 }
+                ]
+              },{
+                featureType: "road.arterial",
+                elementType: "geometry",
+                stylers: [
+                  { hue: "#00ffee" },
+                  { saturation: 50 }
+                ]
+              },{
+                featureType: "poi.business",
+                elementType: "labels",
+                stylers: [
+                  { visibility: "off" }
+                ]
+              }
+            ],
             zoom: 4
         });
 
@@ -85,28 +105,6 @@
                 });
               }
 
-
-              vm.styleArray = [
-                {
-                  featureType: "all",
-                  stylers: [
-                   { saturation: -80 }
-                  ]
-                },{
-                  featureType: "road.arterial",
-                  elementType: "geometry",
-                  stylers: [
-                    { hue: "#00ffee" },
-                    { saturation: 50 }
-                  ]
-                },{
-                  featureType: "poi.business",
-                  elementType: "labels",
-                  stylers: [
-                    { visibility: "off" }
-                  ]
-                }
-              ];
 
             });
 
