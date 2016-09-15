@@ -3,13 +3,17 @@
         $location.path("/");
         console.log(hasInstagram);
         var vm = this;
-        // var littleton = {lat: 39.6133, lng: -105.0166};
-        // var coloSprings = {lat: 38.8339, lng: -104.8214};
-        var london = {lat: 51.5074, lng: 0.1278};
         var nyc = {lat: 40.7128, lng: -74.0059};
         var kcmo = {lat: 39.0997, lng: -94.5786};
 
-        // $rootScope.loggedIn = false;
+        $rootScope.loggedIn = false;
+
+
+        vm.logout = function(){
+            $rootScope.loggedIn == false;
+            console.log("Logout happened");
+        }
+
 
         vm.map = new google.maps.Map(document.getElementById('journey-map'), {
             center: kcmo,
@@ -75,9 +79,9 @@
 
 
               // // Directions between Instagrams
-              var directionsDisplay = new google.maps.DirectionsRenderer({
-                map: vm.map
-              });
+            //   var directionsDisplay = new google.maps.DirectionsRenderer({
+            //     map: vm.map
+            //   });
 
               // Set destination, origin and travel mode.
               // var request = {
@@ -95,15 +99,15 @@
               //   }
               // });
 
-              if (i == 0) request.origin = marker.getPosition();
-              else if (i == locations.length - 1) request.destination = marker.getPosition();
-              else {
-                if (!request.waypoints) request.waypoints = [];
-                request.waypoints.push({
-                  location: marker.getPosition(),
-                  stopover: true
-                });
-              }
+            //   if (i == 0) request.origin = marker.getPosition();
+            //   else if (i == locations.length - 1) request.destination = marker.getPosition();
+            //   else {
+            //     if (!request.waypoints) request.waypoints = [];
+            //     request.waypoints.push({
+            //       location: marker.getPosition(),
+            //       stopover: true
+            //     });
+            //   }
 
 
             });

@@ -1,17 +1,17 @@
 <h1 id="journeygram-h1">JourneyGram</h1>
 
 	<a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
-		<button class="login-btn" type="button">Login with Instagram</button>
+		<button class="login-btn" type="button" ng-show="loggedIn==false">Login with Instagram</button>
 	</a>
 
-	<a href="https://instagram.com/accounts/logout/">
-		<button class="login-btn" type="button">Logout</button>
+	<a ng-click="journeyView.logout()">
+		<button class="login-btn" type="button" ng-show="loggedIn==true">Logout</button>
 	</a>
 
 <div id="journey-map"></div>
 <!-- <new-marker-form/> -->
-<p style="color: white;">{{$rootScope.loggedIn}}</p>
 
+<p style="color: white;">Logged in?: {{loggedIn}}</p>
 
 <h2 ng-hide="journeyView.photoList.length <= 0">Recent Photos</h2>
 <div class="recent-photos" ng-repeat="photo in journeyView.photoList | orderBy:'time'">
