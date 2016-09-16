@@ -1,16 +1,17 @@
 (function() {
-    function JourneyViewCtrl($scope, hasInstagram, $location, $rootScope) {
+    function JourneyViewCtrl($scope, hasInstagram, $location, $rootScope, $cookies, $window) {
         $location.path("/");
         console.log(hasInstagram);
         var vm = this;
         var nyc = {lat: 40.7128, lng: -74.0059};
         var kcmo = {lat: 39.0997, lng: -94.5786};
 
-        $rootScope.loggedIn = false;
 
 
         vm.logout = function(){
-            $rootScope.loggedIn == false;
+            $cookies.remove('accessToken');
+            $rootScope.loggedIn = false;
+            $window.location.reload()
             console.log("Logout happened");
         }
 
@@ -131,5 +132,5 @@
 
     angular
         .module('journeygram')
-        .controller('JourneyViewCtrl', ['$scope', 'hasInstagram', '$location', '$rootScope', JourneyViewCtrl]);
+        .controller('JourneyViewCtrl', ['$scope', 'hasInstagram', '$location', '$rootScope', '$cookies', '$window', JourneyViewCtrl]);
 })();

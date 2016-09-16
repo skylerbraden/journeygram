@@ -18,7 +18,20 @@
 				controller: 'JourneyViewCtrl as journeyView',
 				templateUrl: '/templates/journeyview.html',
                 resolve: {
-                  "hasInstagram" : function($location){
+                  "hasInstagram" : function($location, $cookies, $rootScope){
+                      if($cookies.get("accessToken")) {
+                          $.ajax({
+                              url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + $cookies.get("accessToken"),
+                              type: 'get',
+                              dataType: 'jsonp',
+                              crossOrigin: true,
+                              jsonpCallback: "instaApi",
+                              cache: true
+                          });
+                          $rootScope.loggedIn = true;
+                      }
+
+                      console.log($cookies.get("accessToken"))
                     return true;
                   }
                 }
@@ -29,10 +42,11 @@
             controller: 'JourneyViewCtrl as journeyView',
             templateUrl: '/templates/journeyview.html',
             resolve: {
-              "hasInstagram" : function($location, $stateParams, $rootScope){
+              "hasInstagram" : function($location, $stateParams, $rootScope, $cookies){
                 //   $rootScope.loggedIn = false; // Seems like this should set it to false initially, then change it to true only if the next statement is true.
                   if($stateParams.accessToken != undefined){
-                    //   $rootScope.loggedIn = true;
+                      $rootScope.loggedIn = true;
+                      console.log($rootScope)
                       console.log("trying to json P");
                       $.ajax({
                           url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + $stateParams.accessToken,
@@ -42,7 +56,8 @@
                           jsonpCallback: "instaApi",
                           cache: true
                   });
-                //   $rootScope.loggedIn = true;
+
+                    $cookies.put("accessToken", $stateParams.accessToken);
                   return "Logged in."
                 }else{
                     // $rootScope.loggedIn = false;
@@ -54,7 +69,7 @@
     }
 
     angular
-        .module('journeygram', ['ui.router'])
+        .module('journeygram', ['ui.router','ngCookies'])
         .config(config);
  })();
 

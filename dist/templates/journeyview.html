@@ -1,11 +1,11 @@
 <h1 id="journeygram-h1">JourneyGram</h1>
 
 	<a href="https://api.instagram.com/oauth/authorize/?client_id=d8576bc00e5c40d7a02d5979410e012c&redirect_uri=http://localhost:3000%3F&response_type=token">
-		<button class="login-btn" type="button" ng-show="loggedIn==false">Login with Instagram</button>
+		<button class="login-btn" type="button" ng-hide="loggedIn">Login with Instagram</button>
 	</a>
 
 	<a ng-click="journeyView.logout()">
-		<button class="login-btn" type="button" ng-show="loggedIn==true">Logout</button>
+		<button class="login-btn" type="button" ng-show="loggedIn">Logout</button>
 	</a>
 
 <div id="journey-map"></div>
